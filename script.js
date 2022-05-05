@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     document.addEventListener('click', function(e) {
-        console.log("[Info] Clicked on: " + e.target);
         
         // if the target is menuBtn or sidemenu or any of its children
         if (!e.target.matches('.menuBtn, #mnbtn-ico, .sidemenu, .sidemenu *')) {
@@ -15,27 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     })
 
+    if(document.getElementById("rifecom-textarea") != null){
+        document.getElementById("rifecom-textarea").addEventListener("input", function(e) {
+            // get the amount of characters in the textarea
+            e.target.value = e.target.value.substring(0, 1500);
+            let chars = e.target.value.length;
+            if(chars > 1000){
+                document.getElementById("wordcounter").innerHTML = chars + " /1500";
+                document.getElementById("wordcounter").style.opacity = "1";
+                document.getElementById("wordcounter").style.color = "black";
+            } else {
+                document.getElementById("wordcounter").style.opacity = "0";
+            }
 
-    document.getElementById("rifecom-textarea").addEventListener("input", function(e) {
-        // get the amount of characters in the textarea
-        e.target.value = e.target.value.substring(0, 1500);
-        let chars = e.target.value.length;
-        if(chars > 1000){
-            document.getElementById("wordcounter").innerHTML = chars + " /1500";
-            document.getElementById("wordcounter").style.opacity = "1";
-            document.getElementById("wordcounter").style.color = "black";
-        } else {
-            document.getElementById("wordcounter").style.opacity = "0";
-        }
+            if(chars > 1499){
+                document.getElementById("wordcounter").innerHTML = chars + " /1500";
+                document.getElementById("wordcounter").style.color = "red";
+                document.getElementById("wordcounter").style.opacity = "1";
 
-        if(chars > 1499){
-            document.getElementById("wordcounter").innerHTML = chars + " /1500";
-            document.getElementById("wordcounter").style.color = "red";
-            document.getElementById("wordcounter").style.opacity = "1";
-
-            // remove all the characters that are over the limit
-        } 
-    });
+                // remove all the characters that are over the limit
+            } 
+        })
+    }
 
     document.addEventListener('scroll', function(e) {
         // get the scroll amount
@@ -45,10 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         window.globalScrollAmount  = (scrollAmount/(document.getElementsByClassName("section")[0].getBoundingClientRect().height))
         window.currentTab = Math.floor(window.globalScrollAmount)
         window.activeTabScroll = window.globalScrollAmount - window.currentTab
-
-        console.log("[Info] Current section: " + globalScrollAmount);
-        console.log("[Info] Current tab: " + window.currentTab);
-        console.log("[Info] Current tab scroll: " + window.activeTabScroll);
         
         try{
 
@@ -91,6 +87,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     })
 
+    document.addEventListener('scroll', debounce(function(e) {
+          // set the url to url#scroll
+          if(window.currentTab == 0){
+            window.history.replaceState({}, "", "/");
+        } else {
+            window.history.replaceState(null, null, window.location.pathname + "#" + window.currentTab);
+        }
+    }, 100));
+    
     window.addEventListener('resize', function(e) {
         console.log("[Info] Resized to: " + window.innerWidth);
         if(window.innerWidth < 1000){
@@ -136,20 +141,20 @@ function debounce(func, timeout = 300){
 
 window.inviaMessaggio = async function(){
     // invia attraverso webhooks di discord il messaggio
+    console.log("[!] Attempting to send message...");
     let link = "https://discord.com/api/webhooks/970241915968712714/_heh0m76Ab64MOynOKDirLixoEhMbsiVx4ZNJEHyRaUK9skNDhajXyX6wEmYIYqH5tpT"
     let messaggio = document.getElementById("rifecom-textarea").value;
 
-    if(messaggio.length < 10){
+    if(messaggio.length < 2){
         return false;
     } else if(messaggio.length > 1500){
         messaggio = messaggio.substring(0, 1500);
     }
-    
+
+    document.getElementsByClassName("textarea-wrapper")[0].innerHTML = "Sto inviando il messaggio..."; 
 
     // get the user's ip address
-    let ip = await fetch("https://api.ipify.org?format=json").then(res => res.json());
-    ip = ip.ip;
-
+    let ip = await fetch("https://api.ipify.org?format=json").then(res => res.json()).then(json => json.ip);
 
     let data = {
         // "content": messaggio,
@@ -183,6 +188,8 @@ window.inviaMessaggio = async function(){
         },
         body: JSON.stringify(data)
     });
+
+    console.log("[!] Done!");
 
 }
     

@@ -1,79 +1,124 @@
 <!DOCTYPE html>
-
-<!-- 
-    
-                                        </> scritto da
-    Capuano Maurizio - Dozzini Lorenzo - Legumi Enrico - Salvatori Andrea - Suriani Gianluca
-    
-                _____ ____ _____ _   _ ______ ______ _      _____ _____ ______ 
-                | ____|  _ \_   _| \ | |  ____|  ____| |    |_   _/ ____|  ____|
-                | |__ | |_) || | |  \| | |__  | |__  | |      | || |    | |__   
-                |___ \|  _ < | | | . ` |  __| |  __| | |      | || |    |  __|  
-                ___) || |_) || |_| |\  | |    | |____| |____ _| || |____| |____ 
-                |____/|____/_____|_| \_|_|    |______|______|_____\_____|______|
-                Copyright 2021-2022
-
--->
-
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project P</title>
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.scss">
-
-    <!-- JS -->
-    <script src="script.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3.layout.cloud.js"></script>
-    
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.scss">
+    <script src="/script.js" type="module"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin>
 </head>
 
 <body>
-
     <div class="sidemenu" id="sidemenu" data-state="closed">
-        <div class="ctxBtn">
-            <!-- home -->
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </div>
-        <div class="ctxBtn">
-            <!-- about -->
-            <i class="fas fa-info-circle"></i>
-            <span>About</span>
-        </div>
+        <div class="ctxBtn"> <i class="fa-home fas"></i> <span>Home</span> </div>
+        <div class="ctxBtn"> <i class="fa-info-circle fas"></i> <span>About</span> </div>
     </div>
 
     <div class="navbar">
-        <span>IL POTERE DELLE PAROLE</span>
-        <button class="menuBtn" id="menuBtn" onclick="toggleMenu()" role="button">
-                <i class="fas fa-bars"></i>
-        </button>
+        <div id="navBarTitle">IL POTERE DELLE PAROLE</div> <button class="menuBtn" id="menuBtn" onclick="toggleMenu()"
+            role="button"> <i class="fa-bars fas"></i> </button>
     </div>
+
+    <div class="scrollIndicator"> </div>
     <div class="section" id="home">
         <div class="hero">
-            <!-- <div id="title">placeholder</div>
-            <div id="subtitle">5°BINF • 2021-2022</div>
-            <br> -->
-            <div id="d3-wordcloud">
-                placeholder molto bello
-            </div>
-
+            <div id="herotitle">IL POTERE DELLE PAROLE</div>
             <div class="scrollHint">
-                <div class="scrollHint-text">
-                    <span>Scorri per iniziare</span>
-                </div>
-                <i class="fa-chevron-down fas"></i>
+                <div class="scrollHint-text"> <span>Scorri per iniziare</span> </div> <i
+                    class="fa-chevron-down fas"></i>
             </div>
         </div>
     </div>
-    div.section#
+    <div class="section" id="mcno" data-title="Il manifesto comunicazione non ostile">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea-start"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">Il manifesto della comunicazione non ostile</div>
+            <div class="subtitle">Un progetto sociale di sensibilizzazione contro la violenza delle parole</div>
+            <div class="btnWrapper">
+                <button class="btn-main"><i class="fas fa-external-link-alt"></i> Apri</button>
+                <button class="btn-second"><i class="fas fa-info-circle"></i> Info</button>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="mltvcsi" data-title="MLTV e CSI">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">MLTV</div>
+            <div class="subtitle">Rendere visibili pensiero e apprendimento</div>
+        </div>
+    </div>
+    <div class="section" id="inc" data-title="Incomunicabilità">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">Incomunicabilità</div>
+            <div class="subtitle">L’incomprensione e l’incomunicabilità nascono dalla propria visione parziale, soggettiva e spesso prevenuta della realtà</div>
+        </div>
+    </div>
+    <div class="section" id="ascolto" data-title="Ascolto">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">Ascolto</div>
+            <div class="subtitle"> L’ascolto empatico e senza pregiudizi è alla base della comunicazione e della comprensione</div>
+        </div>
+    </div>
+    <div class="section" id="parole" data-title="Parole">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">Parole</div>
+            <div class="subtitle">Le parole devono generare comprensione e inclusione, vanno scelte accuratamente per avvicinarsi agli altri e superare ogni barriera ed incomprensione</div>
+        </div>
+    </div>
+    <div class="section" id="ribellezza" data-title="Ribellezza">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">Ribellezza</div>
+            <div class="subtitle">Ribelliamoci con la bellezza nelle parole</div>
+        </div>
+    </div>
+    <div class="section" id="rifecom" data-title="Riflessioni e commenti">
+        <div class="bgImage"></div>
+        <div class="wrapper-linea">
+            <div class="linea-end"></div>
+            <div class="linea-conn"></div>
+        </div>
+        <div class="contenuto">
+            <div class="title">Riflessioni e commenti</div>
+            <div class="textarea-wrapper"> <textarea class="textarea" id="rifecom-textarea"
+                    placeholder="Il tuo messaggio..."></textarea>
+                <div id="bottomWrapper"> <button onclick="inviaMessaggio('rifecom-textarea')" class="send-btn">Invia</button>
+                    <div id="wordcounter"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
