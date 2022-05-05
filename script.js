@@ -1,7 +1,3 @@
-import regeneratorRuntime from 'regenerator-runtime';
-
-
-
 document.addEventListener('DOMContentLoaded', function() {
 
     if(localStorage.getItem("hasComment") == "true"){
