@@ -37,6 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
     }
 
+    document.getElementById("popup-close").addEventListener("click", function(e) {
+        togglePopup();
+    });
+
     document.addEventListener('scroll', function(e) {
         // get the scroll amount
         let scrollAmount = window.scrollY;
@@ -127,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("mnbtn-ico").style.animation = "spin 0.3s cubic-bezier(0.165, 0.84, 0.44, 1)"
 
     }
-
 })
 
 function debounce(func, timeout = 300){
@@ -193,3 +196,26 @@ window.inviaMessaggio = async function(){
 
 }
     
+
+window.togglePopup = async function(title, text){
+    // if the popup has "data-active" set to "true", it will be closed
+    if(document.getElementsByClassName("popup-bg")[0].dataset.active == "true"){
+        document.getElementsByClassName("popup-bg")[0].dataset.active = "false";
+        document.documentElement.style.overflowY = "auto";
+    } else {
+        if(!title || !text){
+            if(!title){
+                console.error("[!] No title provided!");
+            } else {
+                console.error("[!] No text provided!");
+            }
+
+            return false;
+        }
+        
+        document.getElementsByClassName("popup-bg")[0].dataset.active = "true";
+        document.getElementById("pu-title").innerHTML = title;
+        document.getElementById("pu-content").innerHTML = text;
+        document.documentElement.style.overflowY = "hidden";
+    }
+}
