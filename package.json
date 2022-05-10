@@ -5,5 +5,8 @@
   },
   "dependencies": {
     "regenerator-runtime": "^0.13.9"
+  },
+  "scripts": {
+    "build": "npx -p parcel parcel build index.html"
   }
 }
