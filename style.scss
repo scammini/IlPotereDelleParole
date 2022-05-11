@@ -585,13 +585,14 @@ html{
                 textarea{
                     width: 60%;
                     height: 100%;
+                    background-color: #f7eac9ab;
                     resize: none;
                     margin-bottom: 15px;
                     // margin: auto;
                     outline: none;
-                    border-radius: 5px;
+                    border-radius: 0px;
+                    border: 2px #1f1f1f solid;
                     font-family: 'Poppins', sans-serif;
-                    // border: none;
                     padding: 15px;
                     box-shadow: 0px 0px 150px 0px rgba(0, 0, 0, 0.103);
 
