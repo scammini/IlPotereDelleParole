@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-
     if(localStorage.getItem("hasComment") == "true"){
         document.getElementsByClassName("textarea-wrapper")[0].innerHTML = "Grazie per il tuo commento!";
     }
@@ -101,15 +100,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100));
     
     window.addEventListener('resize', function(e) {
-        console.log("[Info] Resized to: " + window.innerWidth);
-        if(window.innerWidth < 1000){
-            document.getElementsByClassName("bgImage")[currentTab].style.backgroundSize = "cover";
-            document.getElementsByClassName("bgImage")[currentTab + 1].style.backgroundSize = "cover";
-            document.getElementsByClassName("bgImage")[currentTab - 1].style.backgroundSize = "cover";
-        } else {
-            document.getElementsByClassName("bgImage")[currentTab].style.backgroundSize = 100 + (activeTabScroll * 10) + "vmax";
-            document.getElementsByClassName("bgImage")[currentTab + 1].style.backgroundSize = 100 - (activeTabScroll * 10) + "vmax"
-            document.getElementsByClassName("bgImage")[currentTab - 1].style.backgroundSize = 110 + (activeTabScroll * 10) + "vmax"
+        try{
+            if(window.innerWidth < 1000){
+                document.getElementsByClassName("bgImage")[currentTab].style.backgroundSize = "cover";
+                document.getElementsByClassName("bgImage")[currentTab + 1].style.backgroundSize = "cover";
+                document.getElementsByClassName("bgImage")[currentTab - 1].style.backgroundSize = "cover";
+            } else {
+                document.getElementsByClassName("bgImage")[currentTab].style.backgroundSize = 100 + (activeTabScroll * 10) + "vmax";
+                document.getElementsByClassName("bgImage")[currentTab + 1].style.backgroundSize = 100 - (activeTabScroll * 10) + "vmax"
+                document.getElementsByClassName("bgImage")[currentTab - 1].style.backgroundSize = 110 + (activeTabScroll * 10) + "vmax"
+            }
+        } catch(e){
+            return;
         }
     })
 
@@ -119,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let menuButton = document.getElementById("menuBtn")
         let status = sidemenu.dataset.state
         // it can be either closed or open
-        if(status == "closed"){
+        if(status != "open"){
             sidemenu.dataset.state = "open"
             menuButton.innerHTML = "<i id='mnbtn-ico' class='fas fa-times'></i>"
         } else {
@@ -144,7 +146,6 @@ function debounce(func, timeout = 300){
 
 window.inviaMessaggio = async function(){
     // invia attraverso webhooks di discord il messaggio
-    console.log("[!] Attempting to send message...");
     let link = "https://discord.com/api/webhooks/970241915968712714/_heh0m76Ab64MOynOKDirLixoEhMbsiVx4ZNJEHyRaUK9skNDhajXyX6wEmYIYqH5tpT"
     let messaggio = document.getElementById("rifecom-textarea").value;
 
@@ -154,10 +155,16 @@ window.inviaMessaggio = async function(){
         messaggio = messaggio.substring(0, 1500);
     }
 
+    // if the textbox contains only spaces, don't send the message
+    if(messaggio.replace(/\s/g, '').length == 0){
+        // empty the textbox
+        document.getElementById("rifecom-textarea").value = "";
+        return false;
+    }
+
     document.getElementsByClassName("textarea-wrapper")[0].innerHTML = "Sto inviando il messaggio..."; 
 
-    // get the user's ip address
-    let ip = await fetch("https://api.ipify.org?format=json").then(res => res.json()).then(json => json.ip);
+    messaggio = soapify(messaggio);
 
     let data = {
         // "content": messaggio,
@@ -170,9 +177,6 @@ window.inviaMessaggio = async function(){
                 "description": messaggio,
                 "color": 16777215,
                 "timestamp": new Date(),
-                "footer": {
-                    "text": ip
-                },
                 "author": {
                     "name": "Commento anonimo",
                     "icon_url": "https://i.imgur.com/3mu7WA7.png"
@@ -192,7 +196,6 @@ window.inviaMessaggio = async function(){
         body: JSON.stringify(data)
     });
 
-    console.log("[!] Done!");
 
 }
     
@@ -218,4 +221,84 @@ window.togglePopup = async function(title, text){
         document.getElementById("pu-content").innerHTML = text;
         document.body.style.overflowY = "hidden";
     }
+}
+
+window.soapify = function(text){
+    // filtro anti-profanità
+    // questa funzione censura le parolacce con caratteri speciali casuali alla "cartone animato" (cazzo -> #$%#@!)
+    let badWords = [
+        // se una parola finisce per *, possono esistere variazioni di quella parola (cazz* -> cazzi, cazzo, etc., stronz* -> stronzi, stronza, stronzo, etc.)
+        "cazz",
+        "merda",
+        "stronz",
+        "puttana",
+        "dio",
+        "madonna",
+        "gesù",
+        "vaffanculo",
+        "zoccola",
+        "fottut",
+        "cagat",
+        "cess",
+        "cazzon",
+        "coglione",
+        "shwa", // :)
+        "ammazzati",
+        "culo",
+        "bastard",
+        "palle",
+    ]
+
+    let antiBypassFilter =  [
+        ["a", ["4", "@", "à", "â", "ã", "ä", "å", "æ"]],
+        ["e", ["3", "€", "è", "é", "ê", "ë"]],
+        ["i", ["1", "!", "ì", "í", "î", "ï"]],
+        ["o", ["0", "ò", "ó", "ô", "õ", "ö"]],
+        ["u", ["ü", "ù", "ú", "û"]],
+        ["s", ["5", "$", "§", "ß", "ś", "ŝ", "š", "ş"]],
+        ["c", ["¢", "ç", "ć", "č"]],
+        ["n", ["ñ", "ń", "ň"]],
+        ["y", ["ÿ", "ŷ"]],
+        ["z", ["ž", "ź", "ż"]],
+        ["l", ["ł", "ĺ", "ľ"]],
+        ["t", ["7", "†", "°", "τ", "ţ", "ť", "ŧ"]],
+    ]
+    
+    let censorChars = ["#", "$", "%", "&", "!", "?"]
+
+    // censor the bad words (some words may try to bypass the filter (ex. cazzo -> c4zz0), so we need to check if the word contains a bypass and replace it with the actual char
+    for(let i = 0; i < badWords.length; i++){
+        let word = text.split(" ");
+        for(let j = 0; j < word.length; j++){
+            // if the word contains any of the characters in the second array of the array antiBypassFilter, it will be replaced with the first element of the array
+            if((word[j] + word[j+1]).includes(badWords[i])){
+                console.log((word[j] + word[j+1]).includes(badWords[i]));
+                for(let k = 0; k < antiBypassFilter.length; k++){
+                    for(let l = 0; l < antiBypassFilter[k][1].length; l++){
+                        if(word[j].includes(antiBypassFilter[k][1][l])){
+                            word[j] = word[j].replace(antiBypassFilter[k][1][l], antiBypassFilter[k][0]);
+                        }
+                    }
+                }
+            }
+
+            if(word[j].includes(badWords[i])){
+                let censoredString = []
+                for(let k = 0; k < word[j].length; k++){
+                        censoredString[k] = censorChars[Math.floor(Math.random() * censorChars.length)];                    
+                }
+                word[j] = censoredString.join("");
+            }
+        }
+
+        
+
+        text = word.join(" ");
+    }
+
+
+    return text;
+
+
+
 }
