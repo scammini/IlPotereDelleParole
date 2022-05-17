@@ -201,7 +201,7 @@ window.togglePopup = async function(title, text){
     // if the popup has "data-active" set to "true", it will be closed
     if(document.getElementsByClassName("popup-bg")[0].dataset.active == "true"){
         document.getElementsByClassName("popup-bg")[0].dataset.active = "false";
-        document.documentElement.style.overflowY = "auto";
+        document.body.style.overflowY = "auto";
     } else {
         if(!title || !text){
             if(!title){
@@ -216,6 +216,6 @@ window.togglePopup = async function(title, text){
         document.getElementsByClassName("popup-bg")[0].dataset.active = "true";
         document.getElementById("pu-title").innerHTML = title;
         document.getElementById("pu-content").innerHTML = text;
-        document.documentElement.style.overflowY = "hidden";
+        document.body.style.overflowY = "hidden";
     }
 }

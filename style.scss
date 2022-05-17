@@ -465,24 +465,20 @@ html{
                         }
 
                         i{
-                            animation: bounce infinite 5s;
+                            animation: bounce infinite 3s;
                         }
 
                         @keyframes bounce {
                             0%{
-                                transform: translateY(0);
+                                transform: translateY(2px);
                             }
 
                             30%{
-                                transform: translateY(-5px);
-                            }
-
-                            60%{
-                                transform: translateY(0);
+                                transform: translateY(-4px);
                             }
 
                             100%{
-                                transform: translateY(0);
+                                transform: translateY(2px);
                             }
                             
                         }
@@ -585,13 +581,14 @@ html{
                 textarea{
                     width: 60%;
                     height: 100%;
+                    background-color: #ffffff38;
                     resize: none;
                     margin-bottom: 15px;
                     // margin: auto;
                     outline: none;
-                    border-radius: 5px;
+                    border-radius: 0px;
+                    border: 2px #1f1f1f solid;
                     font-family: 'Poppins', sans-serif;
-                    // border: none;
                     padding: 15px;
                     box-shadow: 0px 0px 150px 0px rgba(0, 0, 0, 0.103);
 
