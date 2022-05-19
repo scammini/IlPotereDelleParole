@@ -2,6 +2,17 @@ document.addEventListener('DOMContentLoaded', function() {
     if(localStorage.getItem("hasComment") == "true"){
         document.getElementsByClassName("textarea-wrapper")[0].innerHTML = "Grazie per il tuo commento!";
     }
+
+    let randomGradients = [
+        '#C33764', '#1D2671', // suriani
+        '#E03FFE', '#6A1B9A',
+        '#B24592', '#F15F79'
+    ]
+
+    let randomGradient = randomGradients[Math.floor(Math.random() * randomGradients.length)];
+    document.getElementById("home").style.background = randomGradient;
+
+
     
     document.addEventListener('click', function(e) {
         
@@ -91,8 +102,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     document.addEventListener('scroll', debounce(function(e) {
-          // set the url to url#scroll
-          if(window.currentTab == 0){
+        // set the url to url#scroll
+        if(window.currentTab == 0){
             window.history.replaceState({}, "", "/");
         } else {
             window.history.replaceState(null, null, window.location.pathname + "#" + window.currentTab);
@@ -302,3 +313,4 @@ window.soapify = function(text){
 
 
 }
+
