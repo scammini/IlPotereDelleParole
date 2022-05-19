@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    // Qui ci vanno le variabili globali
+    
+    --color-red: #FF5F5C; // Orange Red Crayola
+    --color-yellow: #FAB038; // Bright Yellow Crayola
+    --color-white: #FFFFEA; // Ivory
+    --color-cyan: #00CECB;
+    --color-blue: #3185FC;
+
+}
+
+
+::-webkit-scrollbar {
+    width: 0px;
+    background:transparent;
+    padding: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-red);
+    border-radius: 5px;
+    // add some padding to the scrollbar
+}
+
+html{
+    height: 100%;
+    width: 100%;
+    background-color: var(--color-white);
+
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin: auto;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+        animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        overflow-x: hidden;
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(1.05);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .backWidget{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 15px;
+            background-color: var(--color-red);
+            border-radius: 90px;
+            margin: 15px;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            z-index: 999;
+            color: white;
+            animation: popUp 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        @keyframes popUp {
+            from {
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0px)
+            }
+        }
+
+        .title{
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            margin-bottom: 1rem;
+            padding: 100px;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            text-align: center;
+            background-size: cover!important;
+            // don't change the position when scrolling
+            background-repeat: no-repeat!important;
+            // background-attachment: fixed!important;
+            background-position: center!important;
+
+            #info{
+                font-weight: 500;
+                font-size: 1rem;
+            }
+
+            &#parole{
+                background: linear-gradient(to top, #1f1f1f71, #1f1f1fa8), url('assets/images/parole.jpg');
+                position: relative;
+            }
+
+            &#ribellezza{
+                background: linear-gradient(to top, #1f1f1f71, #1f1f1fa8), url('assets/images/ribellezza.jpg');
+
+            }
+
+
+            
+        }
+      
+
+        .content{
+            width: 50vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            text-align: left;
+            margin-top: 25px;
+            margin-bottom: 50px;
+
+            // selected text
+            ::selection{
+                background: var(--color-red);
+                color: var(--color-white);
+            }
+
+            a{
+                color: var(--color-red);
+            }
+        }
+
+        blockquote{
+            border-left: #FF5F5C 5px solid;
+            padding-left: 15px;
+            margin-left: 0;
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .content{
+        width: 100%!important;
+        padding: 15px;
+        box-sizing: border-box;
+        margin-top: 5px!important;
+    }
+    
+    .title{
+        padding: 50px!important;
+        box-sizing: border-box;
+    }
+
+}

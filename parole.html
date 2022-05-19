@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Parole</title>
+    <link rel="stylesheet" href="./page.scss">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin>
+
+    <script>
+        // read time calculator
+        window.readTime = function(word){
+            let words = word.split(" ");
+            words = words.length
+            console.log(words)
+            let wordsPerMinute = 200;
+            let time = Math.ceil(words / wordsPerMinute);
+            return time;
+        }
+
+        // html without the tags
+        document.addEventListener("DOMContentLoaded", function(event) {
+            let textHTML = document.getElementById("content").innerHTML.replace(/<[^>]*>/g, '');
+            document.getElementById("reading-time-value").innerHTML = readTime(textHTML) + " min";
+        })
+    </script>
+</head>
+
+<body>
+    <div class="backWidget" onclick="window.location.href='/'">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+
+    <div class="title" id="parole" >
+        Le Parole
+        <div id=info>
+            <!-- reading time -->
+            <span id="reading-time">
+                <i class="fas fa-clock"></i>
+                <span id="reading-time-text">Lettura: </span>
+                <span id="reading-time-value"></span>
+            </span>
+            •
+            <!-- author -->
+            <span id="author">
+                <i class="fas fa-user"></i>
+                <span id="author-text">Autore: </span>
+                <span id="author-value">Capuano Maurizio</span>
+            </span>
+        </div>
+    </div>
+    <div class="content" id="content">
+    <blockquote>
+        <p><em>&quot;Sai, le Parole fanno più male dei pugni&quot;
+                Risi, rispondendo: &quot;Beh, con un pugno le faccio uscire sangue dal naso, lei invece con le
+                parole?&quot;
+                &quot;Dal cuore, che è molto peggio&quot;</em></p>
+    </blockquote>
+    <p>La <strong>Parola</strong> è lo <em>strumento più versatile e potente</em> di cui l&#39;uomo dispone.
+        Un gruppo di Parole ben usate può creare legami indissolubili, un gruppo di Parole mal poste riesce a fare danni
+        equiparabili a quelli di un potente ordigno.</p>
+    <hr>
+    <p>È questa l&#39;importante lezione che abbiamo imparato insieme durante le attività interdisciplinari affrontate
+        in classe: nelle attività riguardanti <em>le Parole</em> (<em>MLTV See, Think, Wonder</em> e <em>MLTV CSI</em>)
+        ci siamo totalmente immersi nella sconfinata bellezza del <em>mondo delle Parole</em>.</p>
+    <p>Un estratto da un film di <a href="https://it.wikipedia.org/wiki/Roberto_Benigni">Roberto Benigni</a> o un
+        discorso intrattenuto da un personaggio del film di <a
+            href="https://it.wikipedia.org/wiki/Inside_Out_(film_2015">Inside Out</a>) sono ottimi spunti dai quali
+        partire per dar vita ad una coinvolgente conversazione costruttiva e proficua per tutti coloro che la
+        intrattengono.
+        È proprio ciò che è successo nella nostra classe, grazie alle attività proposte dalla docente ci siamo sentiti,
+        oltre che capaci di sostenere in modo proverbiale dei discorsi su argomenti di non poco conto, soprattutto
+        cresciuti <strong>sia come alunni sia come persone</strong>, come cittadini onesti e corretti di un mondo che
+        merita di essere abitato da uomini e donne <em>educati civicamente</em> al giusto e corretto uso del più potente
+        mezzo di cui sia mai stato fatto dono, del mezzo di cui solo e solamente all&#39;umanità dispone, del mezzo con
+        cui ogni conflitto potrebbe essere messo a tacere: <strong>le Parole</strong></p>
+
+    </div> 
+</body>
+
+</html>

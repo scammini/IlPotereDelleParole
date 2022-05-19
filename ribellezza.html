@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ribellezza</title>
+    <link rel="stylesheet" href="./page.scss">
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin>
+
+    <script>
+        // read time calculator
+        window.readTime = function(word){
+            let words = word.split(" ");
+            words = words.length
+            console.log(words)
+            let wordsPerMinute = 200;
+            let time = Math.ceil(words / wordsPerMinute);
+            return time;
+        }
+
+        // html without the tags
+        document.addEventListener("DOMContentLoaded", function(event) {
+            let textHTML = document.getElementById("content").innerHTML.replace(/<[^>]*>/g, '');
+            document.getElementById("reading-time-value").innerHTML = readTime(textHTML) + " min";
+        })
+    </script>
+</head>
+
+<body>
+    <div class="backWidget" onclick="window.location.href='/'">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+
+    <div class="title" id="ribellezza" >
+        #Ribellezza
+        <div id=info>
+            <!-- reading time -->
+            <span id="reading-time">
+                <i class="fas fa-clock"></i>
+                <span id="reading-time-text">Lettura: </span>
+                <span id="reading-time-value"></span>
+            </span>
+            •
+            <!-- author -->
+            <span id="author">
+                <i class="fas fa-user"></i>
+                <span id="author-text">Autore: </span>
+                <span id="author-value">Capuano Maurizio</span>
+            </span>
+        </div>
+    </div>
+    <div class="content" id="content">
+    <div class="content">
+        <blockquote>
+            <p><em>&quot;Chi smette di cercare la bellezza smette di trovarla e quindi di riceverla, perché la sua
+                    ricerca
+                    apre
+                    lo spazio in cui si può accoglierla. Chi non la riceve comincia a disperare sulla sua vita perché
+                    solo
+                    la
+                    bellezza risveglia la promessa di bene che c&#39;è in ogni singola vita e la chiama al suo
+                    compimento.
+                    Per questo salva il mondo, perché salva il mondo che ciascuno di noi è e può fare, e nessuno al
+                    posto
+                    nostro. Chi non trova bellezza smette di amarsi e di amare. La #ribellezza non si ferma.&quot;</em>
+            </p>
+        </blockquote>
+        <p>Queste sono le meravigliose parole del post Instagram di <a
+                href="https://www.instagram.com/alexdavenia/">Alessandro
+                D&#39;Avenia</a> che danno una ulteriore conclusione all&#39;articolo di giornale &quot;<a
+                href="https://www.corriere.it/alessandro-d-avenia-ultimo-banco/22_febbraio_28/ricordi-europeo-8220176c-97f4-11ec-97aa-535db4de4386.shtml">Ricordi
+                di un Europeo</a>&quot; pubblicato nel <em>Corriere della Sera</em>.
+            L&#39;articolo parla dei contenuti del libro &quot;<em>Il mondo di ieri: ricordi di un europeo</em>&quot; di
+            <strong>Stefan Zweig</strong>, un uomo che oggi definiremmo <em>europeista</em> per via del suo profondo
+            desiderio
+            di stabilità e pace entro i confini della fertile terra che da millenni chiamiamo Europa. Pensare che la sua
+            villa
+            di Salisburgo a chiamava proprio Europa!
+            Il famoso libro del &#39;41 si conclude con l&#39;evento dell&#39;invasione della Polonia da parte dei
+            nazisti,
+            simbolo universale della morte della pace europea, e questo particolare ha una valenza significativa per
+            d&#39;Avenia e per i giorni nostri: Zweig esalò il suo ultimo respiro il 23 febbraio del 1942, in questo
+            esatto
+            giorno, precisamente ottant&#39;anni dopo, <em>l&#39;umanistica pace è stata nuovamente schiacciata</em>
+            dall&#39;invasione dell&#39;Ucraina, è stato questo il movente che ha portato lo scrittore contemporaneo a
+            produrre
+            il suo articolo di giornale.</p>
+        <blockquote>
+            <p><em>&quot;Sono stato contemporaneo delle due più grandi guerre dell&#39;umanità. Nel periodo prebellico
+                    ho
+                    conosciuto il grado e la forma più alta della libertà individuale, per vederla poi al più basso
+                    livello
+                    cui
+                    sia scesa da secoli&quot;
+                    ~Stefan Zweig</em></p>
+        </blockquote>
+        <p>Il <strong>diritto alla libertà</strong> non è a caso posto tra i diritti fondamentali dell&#39;umanità che,
+            insieme
+            alla <strong>vita</strong> e all&#39;<strong>integrità fisica</strong>, ha il compito di garantire <em>pace
+                e
+                giustizia</em> a donne e uomini di ogni età.
+            L&#39;attività svolta insieme alle nostre docenti ci ha spinti alla profonda riflessione sull&#39;epoca in
+            cui
+            viviamo e alle situazioni in cui siamo stati catapultati contro il nostro volere e contro ogni aspettativa:
+            una
+            <strong>pandemia</strong> e la <strong>guerra</strong>.
+            <em>È tornata la guerra in Europa</em>, la grande paura di molti e umani uomini impotenti si è concretizzata
+            dinnanzi ai loro occhi per mano di pochi e disumani uomini potenti che delirano credendo sia possibile
+            giocare
+            con
+            la vita di innumerevoli popoli per capriccio o per qualsiasi altra motivazione.</p>
+        <blockquote>
+            <p><em>&quot;[...] Non sembra possibile domare (con il diritto, le armi, le sanzioni, le organizzazioni
+                    internazionali...) questi istinti nelle relazioni tra i popoli, proprio perché questi istinti [si
+                    riferisce
+                    agli istinti barbarici] appartengono a tutti, <strong>da chi guida nel traffico a chi governa una
+                        nazione</strong>.
+                    Questi istinti sono necessari alla tensione vitale, ma non è vero che questa tensione si realizza
+                    meglio
+                    nella competizione che nella cooperazione. Credo che qui stia l&#39;enorme vuoto educativo della
+                    nostra
+                    cultura e la sfida per il futuro: per unirci non basteranno mai solo le soluzioni tecniche (dalla
+                    moneta
+                    agli eserciti) che non sono altro che maschere della competizione.&quot;
+                    ~ Alessandro d&#39;Avenia</em></p>
+        </blockquote>
+        <p>Un altro punto di accesa conversazione, la riflessione si è spostata sull&#39;idealismo del
+            <em>progresso</em> e
+            sugli effetti che ha (e che ha avuto) sulla società a partire dalla prima rivoluzione industriale sino ad
+            arrivare
+            ai giorni nostri. Ci siamo chiesti se le parole di d&#39;Avenia fossero reali e quali siano le
+            <strong>soluzioni
+                non
+                tecniche</strong> da adottare: tra i riferimenti ad <em>Imagine</em> di John Lennon e a discorsi
+            filosofici
+            di
+            vario genere la conclusione alla quale siamo giunti è che ci siano delle parole chiave per descrivere
+            &quot;<em>l&#39;uomo ottocentesco della belle époque</em>&quot;, pieno di ideali liberali di pace e
+            prosperità:
+        </p>
+        <ul>
+            <li><strong>Compassione</strong></li>
+            <li><strong>Empatia</strong></li>
+            <li><strong>Ascolto</strong></li>
+            <li><strong>Comunicazione</strong></li>
+        </ul>
+        <p>La lista potrebbe sicuramente andare avanti per molto, ma spero di aver comunque reso l&#39;idea di come
+            possa
+            essersi svolta la meravigliosa e costruttiva attività.</p>
+        <blockquote>
+            <p><em>&quot;Io non so quanto questa guerra ci toccherà da vicino, ma non posso ignorare che a noi è
+                    affidato il
+                    compito e il coraggio di <strong>aprire un&#39;epoca nuova sulle macerie</strong> dell&#39;attuale
+                    che
+                    poi
+                    sono le stesse del mondo di ieri.
+                    Lì dove siamo, oggi, a partire da come tratteremo chi ci sta accanto, da come collaboreremo con
+                    colleghi,
+                    <strong>da come staremo nel traffico</strong>. Solo questo potrà liberarci dal pessimismo che
+                    attanaglia
+                    il
+                    nostro cuore.&quot;
+                    ~ Alessandro d&#39;Avenia</em></p>
+        </blockquote>
+        <p>Queste sono le stupende parole con le quali intendo lasciarvi, nella speranza che la lettura di questa pagina
+            e,
+            lo
+            consiglio vivamente, dell&#39;articolo di d&#39;Avenia possa aver instillato la stessa favilla che le nostre
+            docenti
+            sono riuscite ad instillare in noi.
+            Vi lascio, nella speranza di poter <em>raccogliere il coraggio necessario per aprire un&#39;epoca nuova
+                sulle
+                macerie dell&#39;attuale</em>. #RiBellezza</p>
+    </div>
+</body>
+
+</html>
