@@ -1,13 +1,12 @@
 {
   "devDependencies": {
     "@parcel/transformer-sass": "^2.5.0",
-    "@parcel/resolver-glob": "^2.5.0",
     "sass": "^1.51.0"
   },
   "dependencies": {
     "regenerator-runtime": "^0.13.9"
   },
   "scripts": {
-    "build": "npx -p parcel parcel build index.html"
+    "build": "npx -p parcel parcel build ./*.html"
   }
 }
