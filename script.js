@@ -13,6 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("home").style.background = randomGradient;
 
 
+    let sections = document.getElementsByClassName("section")
+
+    for(let i = 1; i < sections.length; i++){
+        document.getElementById("sidemenu").innerHTML += `<a href="#${sections[i].id}" onclick="toggleMenu()"><div class="ctxBtn"><span>${sections[i].dataset.title ? sections[i].dataset.title : "???"}</span></div>
+        </a>`
+    }
+    
+    // document.getElementById("sidemenu").innerHTML += `<div class="ctxBtn"><span>About</span> </div>`
+
     
     document.addEventListener('click', function(e) {
         
