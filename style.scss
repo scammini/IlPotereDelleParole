@@ -44,6 +44,10 @@ html{
         opacity: 0;
         animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
         overflow-x: hidden;
+
+        a{
+            color: var(--color-red);
+        }
         
         
 
@@ -686,6 +690,7 @@ html{
                     .subtitle{
                         padding-left: 15px!important;
                         padding-right: 15px!important;
+                        font-size: 1.2rem!important;
                         width: auto;
                     }
                 }
@@ -829,3 +834,5 @@ html{
         }
     }
 }
+
+

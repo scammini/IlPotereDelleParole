@@ -115,6 +115,22 @@ html{
 
             }
 
+            &#mltv{
+                background: linear-gradient(to top, #1f1f1f71, #1f1f1fa8), url("./assets/images/mltv.jpg");
+            }
+
+            &#mcno{
+                background: linear-gradient(to top, #1f1f1f71, #1f1f1fa8), url("./assets/images/mcno.jpg");
+            }
+
+            &#empatia{
+                background: linear-gradient(to top, #1f1f1f71, #1f1f1fa8), url("./assets/images/ascolto.jpg");
+            }
+
+            &#incomunicabilita{
+                background: linear-gradient(to top, #1f1f1f71, #1f1f1fa8), url("./assets/images/inc.jpg");
+            }
+
 
             
         }
@@ -125,7 +141,7 @@ html{
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             margin: auto;
             text-align: left;
             margin-top: 25px;
@@ -139,13 +155,25 @@ html{
 
             a{
                 color: var(--color-red);
-            }
+            }  
+        }
+        
+        img{  
+                max-height: 500px;
+                width: auto;
+                max-width: 50vw;
         }
 
         blockquote{
             border-left: #FF5F5C 5px solid;
             padding-left: 15px;
             margin-left: 0;
+
+            img{  
+                max-height: 500px;
+                width: auto;
+                max-width: 50vw;
+            }
         }
     }
 }
@@ -156,11 +184,22 @@ html{
         padding: 15px;
         box-sizing: border-box;
         margin-top: 5px!important;
+
+
+
+        img{
+            max-width: 90vw!important;
+        }
+
+        iframe{
+            max-width: 90vw!important;
+        }
     }
     
     .title{
         padding: 50px!important;
         box-sizing: border-box;
+        font-size: 7.5vw!important;
     }
 
 }

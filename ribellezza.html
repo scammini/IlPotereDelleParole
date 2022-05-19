@@ -10,24 +10,6 @@
     <script src="./script.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin>
-
-    <script>
-        // read time calculator
-        window.readTime = function(word){
-            let words = word.split(" ");
-            words = words.length
-            console.log(words)
-            let wordsPerMinute = 200;
-            let time = Math.ceil(words / wordsPerMinute);
-            return time;
-        }
-
-        // html without the tags
-        document.addEventListener("DOMContentLoaded", function(event) {
-            let textHTML = document.getElementById("content").innerHTML.replace(/<[^>]*>/g, '');
-            document.getElementById("reading-time-value").innerHTML = readTime(textHTML) + " min";
-        })
-    </script>
 </head>
 
 <body>
@@ -43,7 +25,7 @@
             <span id="reading-time">
                 <i class="fas fa-clock"></i>
                 <span id="reading-time-text">Lettura: </span>
-                <span id="reading-time-value"></span>
+                <span id="reading-time-value">4 min</span>
             </span>
             •
             <!-- author -->

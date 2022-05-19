@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
         if(globalScrollAmount > 0.6){
+            if(document.getElementById("navBarTitle").dataset.active == "true") return;
             // menu shown
             document.getElementById("navBarTitle").dataset.active = "true";
             document.getElementById("navBarTitle").style.color = "#fff";
