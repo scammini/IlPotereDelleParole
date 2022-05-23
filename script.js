@@ -260,7 +260,6 @@ window.soapify = function(text){
         "zoccola",
         "fottut",
         "cagat",
-        "cess",
         "cazzon",
         "coglione",
         "shwa", // :)
