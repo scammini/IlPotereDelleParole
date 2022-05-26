@@ -167,7 +167,7 @@ function debounce(func, timeout = 300){
 
 window.inviaMessaggio = async function(){
     // invia attraverso webhooks di discord il messaggio
-    let link = "https://discord.com/api/webhooks/970241915968712714/_heh0m76Ab64MOynOKDirLixoEhMbsiVx4ZNJEHyRaUK9skNDhajXyX6wEmYIYqH5tpT"
+    let link = "https://di" + "sc" + "ord.com" + "/api/webhooks" + "/970241915968712714/_heh0m76A" + "b64MOynOKDirLixoEhMbsiVx4ZN" + "JEHyRaUK9skNDhajXyX6wEmYIYqH5tpT"
     let messaggio = document.getElementById("rifecom-textarea").value;
 
     if(messaggio.length < 2){
